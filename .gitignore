@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.srt
+*.json
+!package.json
+!tsconfig.json
