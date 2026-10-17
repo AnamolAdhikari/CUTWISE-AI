@@ -1,10 +1,25 @@
 # CUTWISE AI — local-first video editing
 
-Early development prototype. CUTWISE turns recorded footage into a suggested first cut by detecting extended silence. It runs locally; no uploads or paid APIs.
+CUTWISE v0.2 is an early desktop editor built with **Tauri 2, React, TypeScript, Rust and FFmpeg**. It turns recorded footage into a suggested first cut by detecting extended silence. It runs locally; no uploads or paid APIs.
 
-> **Alpha status:** CUTWISE does not use an AI model yet. Offline speech transcription, intelligent pacing, video preview, and full timeline editing are roadmap items. This alpha demonstrates the local video-editing engine.
+> **Alpha status:** CUTWISE does not use an AI model yet. Offline speech transcription, intelligent pacing, and full timeline editing are roadmap items. The new React app supports video preview in codecs supported by the operating system's webview, timeline clip selection, and Rust/FFmpeg processing.
 
-## Requirements
+## New desktop application (v0.2)
+
+Install Node.js, Rust, Tauri's operating-system prerequisites, and FFmpeg. See [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) for platform-specific setup.
+
+```bash
+npm ci
+npm run tauri dev
+```
+
+The editor can import a video through the native file dialog, preview compatible formats, detect quiet sections, include/exclude suggested clips, and export an MP4. FFmpeg/FFprobe must be on the system PATH. Rendering is currently synchronous in the Rust command and may be slow with long footage. This is an **unreleased developer build**, not yet a signed installer.
+
+## Legacy Python alpha
+
+The original Python/Tkinter implementation is preserved for comparison and regression testing.
+
+### Requirements
 
 - Python 3.10+
 - FFmpeg and FFprobe in PATH
@@ -21,7 +36,7 @@ python3 desktop.py
 
 If you use another Python version, install the matching `python-tk` package. Verify your Python can import Tkinter with `python3 -m tkinter`.
 
-## Quick start
+### Quick start
 
 ```bash
 python desktop.py
