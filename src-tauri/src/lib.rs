@@ -68,11 +68,11 @@ fn analyze_video(path: String, threshold_db: i32, minimum_silence: f64) -> Resul
     let mut clips = Vec::new();
     for (index, start) in starts.iter().enumerate() {
         let end = ends.get(index).copied().unwrap_or(info.duration);
-        let cut_start = (start + .12).min(info.duration).max(cursor);
-        if cut_start - cursor >= .35 { clips.push(Clip { start: cursor, end: cut_start }); }
-        cursor = (end - .12).max(cut_start).min(info.duration);
+        let cut_start = (start + 0.12).min(info.duration).max(cursor);
+        if cut_start - cursor >= 0.35 { clips.push(Clip { start: cursor, end: cut_start }); }
+        cursor = (end - 0.12).max(cut_start).min(info.duration);
     }
-    if info.duration - cursor >= .35 { clips.push(Clip { start: cursor, end: info.duration }); }
+    if info.duration - cursor >= 0.35 { clips.push(Clip { start: cursor, end: info.duration }); }
     let retained: f64 = clips.iter().map(|clip| clip.end - clip.start).sum();
     Ok(Analysis { duration: info.duration, clips, removed_seconds: (info.duration - retained).max(0.) })
 }
@@ -87,7 +87,7 @@ fn export_video(path: String, output: String, clips: Vec<Clip>) -> Result<(), St
     if clips.is_empty() { return Err("No clips selected".into()); }
     let mut previous = 0.;
     for clip in &clips {
-        if !clip.start.is_finite() || !clip.end.is_finite() || clip.start < previous || clip.end <= clip.start || clip.end > duration + .02 {
+        if !clip.start.is_finite() || !clip.end.is_finite() || clip.start < previous || clip.end <= clip.start || clip.end > duration + 0.02 {
             return Err("Invalid or unordered clip range".into());
         }
         previous = clip.end;
