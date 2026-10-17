@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "CUTWISE",
+  "version": "0.2.0-alpha.1",
+  "identifier": "app.cutwise.editor",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [{"title":"CUTWISE — Video Editor","width":1440,"height":900,"minWidth":920,"minHeight":700,"backgroundColor":"#101014"}],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost; media-src 'self' asset: http://asset.localhost; style-src 'self' 'unsafe-inline'; font-src 'self'",
+      "assetProtocol": {"enable":true,"scope":["**"]}
+    }
+  },
+  "bundle": {"active":true,"targets":"all","icon":["icons/32x32.png","icons/128x128.png","icons/128x128@2x.png","icons/icon.icns","icons/icon.ico"]}
+}

@@ -11,6 +11,12 @@ build/
 *.mkv
 *.wav
 *.srt
-*.json
-!package.json
-!tsconfig.json
+decisions.json
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/icons/android/
+src-tauri/icons/ios/
+src-tauri/icons/Square*.png
+src-tauri/icons/StoreLogo.png
+*.tsbuildinfo
